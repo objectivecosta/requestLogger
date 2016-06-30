@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+# Setup:
+project_name = "requestLogger"
+target = nil # this machine
+
+# Execution
+
+puts "Executing build command"
+
+build_command = "go build -o bin/#{project_name}"
+
+if !target.nil? then
+  target_params = target.split "-"
+  build_command = "GOOS=\"#{target_params[0]}\" GOARCH=\"#{target_params[1]}\" go build -o bin/#{project_name}_#{target}"
+end
+
+puts "Build command: #{build_command}"
+
+puts `#{build_command}`
+
+puts "Done. If suceeded, output will be in bin/#{project_name}_#{target}" unless target.nil?
+puts "Done. If suceeded, output will be in bin/#{project_name}" if target.nil?
