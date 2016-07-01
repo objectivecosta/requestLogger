@@ -18,3 +18,5 @@ Eg.
 ### Running
 
 `./bin/requestLogger` (it will start listening on port 3000, if available)
+
+By default it only logs the request Path, Body and Method. To also log the headers, start it with `./bin/requestLogger --headers`
